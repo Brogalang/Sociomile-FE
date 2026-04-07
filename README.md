@@ -70,8 +70,6 @@ Jalankan seluruh layanan:
 docker compose up --build
 ````
 
-
-
 Akses aplikasi di: http://localhost:5173
 
 ## Author
