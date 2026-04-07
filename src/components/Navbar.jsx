@@ -7,10 +7,13 @@ function Navbar() {
   const initials = getInitials(user?.email);
 
   const navItems = [
-    { label: "Dashboard", path: "/dashboard", icon: "⊞" },
-    { label: "Conversations", path: "/conversations", icon: "💬" },
-    { label: "Tickets", path: "/tickets", icon: "🎫" },
+    { label: "Dashboard", path: "/dashboard", roles: ["admin", "agent", "developer"] },
+    { label: "Conversations", path: "/conversations", roles: ["admin", "agent"] },
+    { label: "Tickets", path: "/tickets", roles: ["admin", "agent", "developer"] },
   ];
+  const visibleNavItems = navItems.filter((item) =>
+    item.roles.includes(user?.role)
+  );
   return (
     <nav style={styles.navbar}>
       <div style={styles.brand}>
@@ -19,7 +22,7 @@ function Navbar() {
       </div>
 
       <div style={styles.menu}>
-        {navItems.map((item) => {
+        {visibleNavItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
             <Link

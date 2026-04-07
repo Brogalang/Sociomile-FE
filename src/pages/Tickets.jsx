@@ -18,7 +18,7 @@ function timeAgo(dateStr) {
   return `${Math.floor(diff / 86400)}d ago`;
 }
 
-const FILTERS = ["All", "Open", "Pending", "Resolved"];
+const FILTERS = ["All", "Open", "In_Progress", "Resolved", "Closed"];
 
 export default function Tickets() {
   const [tickets, setTickets] = useState([]);
@@ -105,7 +105,7 @@ export default function Tickets() {
                   }}
                   onClick={() => setActiveFilter(f)}
                 >
-                  {f}
+                  {f.replace("_", " ")}
                 </button>
               ))}
             </div>

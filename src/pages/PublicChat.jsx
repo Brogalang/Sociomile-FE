@@ -99,12 +99,16 @@ export default function PublicChat() {
 
   // ── start polling when entering chat ─────────────────────────────────
   useEffect(() => {
-    if (step === "chat" && phone) {
+    if (!phone) return;
+
+    fetchMessages(phone);
+
+    pollRef.current = setInterval(() => {
       fetchMessages(phone);
-      pollRef.current = setInterval(() => fetchMessages(phone), POLL_INTERVAL);
-    }
+    }, POLL_INTERVAL);
+
     return () => clearInterval(pollRef.current);
-  }, [step, phone]);
+  }, [phone]);
 
   // ── auto-scroll ───────────────────────────────────────────────────────
   useEffect(() => {

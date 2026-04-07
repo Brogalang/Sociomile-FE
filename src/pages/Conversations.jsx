@@ -42,7 +42,7 @@ function timeAgo(dateStr) {
   return `${Math.floor(diff / 86400)}d ago`;
 }
 
-const FILTERS = ["All", "Open", "Pending", "Resolved"];
+const FILTERS = ["All", "Open", "Escalated", "Closed"];
 
 export default function Conversations() {
   const [conversations, setConversations] = useState([]);
@@ -53,18 +53,30 @@ export default function Conversations() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    loadConversations();
+    loadConversations(); // pertama kali loading
+
+    const interval = setInterval(() => {
+      loadConversations(true); // silent refresh
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, [page]);
 
-  const loadConversations = async () => {
-    setLoading(true);
+  const loadConversations = async (silent = false) => {
+    if (!silent) setLoading(true);
+
     try {
       const data = await getConversations(page, 15);
-      setConversations(data || []);
+
+      setConversations((prev) => {
+        if (JSON.stringify(prev) === JSON.stringify(data)) return prev;
+        return data;
+      });
+
     } catch {
       setConversations([]);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   };
 

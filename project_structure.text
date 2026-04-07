@@ -4,6 +4,7 @@
 - index.html
 - package-lock.json
 - package.json
+- project_structure.text
 - public
   - favicon.svg
   - icons.svg
@@ -28,6 +29,7 @@
     - Conversations.jsx
     - Dashboard.jsx
     - Login.jsx
+    - PublicChat.jsx
     - Tickets.jsx
   - services
     - authService.js
