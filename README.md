@@ -36,7 +36,7 @@
 |------|-----------|
 | ![](docs/login.png) | ![](docs/dashboard.png) |
 
-| Conversations | Chat |
+| Conversations | Public Chat |
 |--------------|------|
 | ![](docs/conversation.png) | ![](docs/public-chat.png) |
 
