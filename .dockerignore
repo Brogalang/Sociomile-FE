@@ -1,0 +1,6 @@
+node_modules
+dist
+.git
+.env
+.eslint.config.js
+README.md

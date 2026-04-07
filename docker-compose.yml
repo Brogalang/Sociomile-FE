@@ -1,0 +1,16 @@
+services:
+  sociomile-frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: sociomile-fe
+    ports:
+      - "5173:80"
+    restart: always
+    networks:
+      - sociomile-network
+
+networks:
+  sociomile-network:
+    external: true
+    name: sociomile-be_sociomile-network
