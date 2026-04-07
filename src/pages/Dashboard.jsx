@@ -51,13 +51,13 @@ export default function Dashboard() {
           color: "#059669",
           bg: "#ecfdf5",
         },
-        {
-          label: "Avg. Response Time",
-          value: data.avg_response_time,
-          icon: "⚡",
-          color: "#d97706",
-          bg: "#fffbeb",
-        },
+        // {
+        //   label: "Avg. Response Time",
+        //   value: data.avg_response_time,
+        //   icon: "⚡",
+        //   color: "#d97706",
+        //   bg: "#fffbeb",
+        // },
       ]);
 
       setRecentTickets(ticketRes.data.data || ticketRes.data);
